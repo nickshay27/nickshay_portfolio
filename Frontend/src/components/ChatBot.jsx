@@ -64,9 +64,7 @@ const ChatBot = () => {
     //     ]
     //   },
     //   {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     }
+    //    
     //   }
     // );
 
