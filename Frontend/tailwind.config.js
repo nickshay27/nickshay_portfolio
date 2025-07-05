@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        rain: 'rain 15s linear infinite',
+        shine: 'shine 2s ease-in-out infinite',
       },
       keyframes: {
         rain: {
@@ -17,6 +17,9 @@ module.exports = {
         '-1': '-1',
         '-2': '-2',
       },
+       animation: {
+    'spin-slow': 'spin 25s linear infinite',
+  },
     },
   },
   plugins: [],

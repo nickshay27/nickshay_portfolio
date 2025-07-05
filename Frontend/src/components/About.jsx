@@ -1,190 +1,174 @@
-import React from 'react';
-import Slider from 'react-slick';
-import { motion } from 'framer-motion';
-import { Typewriter } from 'react-simple-typewriter';
+import React from "react";
+import Slider from "react-slick";
+import { Parallax } from "react-scroll-parallax";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 import {
-  BadgeCode,
-  LaptopMinimal,
-  TerminalSquareDashed,
-  CloudCog,
-  BriefcaseBusiness,
-  Database,
-  RocketLaunch,
-  Sparkles,
-} from 'lucide-react';
-
-const careerSlides = [
-  {
-    title: "🎓 Internship – KVR Analytics (Indore)",
-    description:
-      "6-month frontend internship during college using HTML, CSS, JS, React. Focused on UI, forms, authentication. Gained hands-on experience building real apps.",
-  },
-  {
-    title: "💼 Apprentice Backend – WNS (Onfido Process)",
-    description:
-      "Worked with data analysis, bulk international document handling & managing Confluence. Built analytics mindset & enterprise-level data practices.",
-  },
-  {
-    title: "👨‍💻 Full Stack Developer – Builtup Technologies",
-    description:
-      "Built full stack apps with Next.js, Node, Express & MongoDB. Collaborated cross-functionally and optimized frontend/backend performance.",
-  },
-  {
-    title: "🛠️ Software Developer – VidyaGXP",
-    description:
-      "Developing web solutions using React.js and Node.js for industry-focused clients. Handling backend services and UI integration.",
-  },
-];
-
-const quotes = [
-  "Keep building. Every line counts.",
-  "Code with purpose. Design with intent.",
-  "Progress, not perfection.",
-  "Think bigger. Build smarter.",
-];
-const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  FaHtml5,
+  FaReact,
+  FaNodeJs,
+  FaDatabase,
+  FaKey,
+  FaCloudUploadAlt,
+  FaRocket,
+} from "react-icons/fa";
 
 const About = () => {
+  const careerSlides = [
+    {
+      title: "🎓 Internship – KVR Analytics (Indore)",
+      description:
+        "6-month frontend internship using HTML, CSS, JS, React. Hands-on UI building, form validations & real projects.",
+    },
+    {
+      title: "💼 Backend Apprentice – WNS (Onfido Process)",
+      description:
+        "Worked with document verification flows, data audits, & enterprise tools like Confluence + Jira.",
+    },
+    {
+      title: "👨‍💻 Full Stack Developer – Builtup Technologies",
+      description:
+        "Built full stack solutions with Next.js, MongoDB, REST APIs. Optimized performance and UI/UX delivery.",
+    },
+    {
+      title: "🛠️ Developer – VidyaGXP",
+      description:
+        "Leading projects in React.js, Node.js for real-world pharma solutions. Full ownership of UI & backend logic.",
+    },
+  ];
+
+  const techStack = [
+    { name: "HTML/CSS", icon: <FaHtml5 size={18} /> },
+    { name: "React / Next.js", icon: <FaReact size={18} /> },
+    { name: "Node / Express", icon: <FaNodeJs size={18} /> },
+    { name: "MongoDB", icon: <FaDatabase size={18} /> },
+    { name: "JWT / API", icon: <FaKey size={18} /> },
+    { name: "Vercel / Render", icon: <FaCloudUploadAlt size={18} /> },
+  ];
+
+  const quotes = [
+    "Keep building. Every line counts.",
+    "Code with purpose. Design with intent.",
+    "Progress, not perfection.",
+    "Think bigger. Build smarter.",
+  ];
+
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
   const sliderSettings = {
     dots: true,
     infinite: true,
-    speed: 800,
+    speed: 600,
     autoplay: true,
     autoplaySpeed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    pauseOnHover: true,
-  };
-
-  const badgeVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.9 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        delay: i * 0.1,
-        type: 'spring',
-        stiffness: 140,
-      },
-    }),
   };
 
   return (
     <section
       id="about"
-      className="relative bg-gradient-to-br from-[#1b1e24] via-[#1e2530] to-[#12161d] text-white py-28 px-6 overflow-hidden"
+      className="relative py-36 px-6 bg-gradient-to-br from-[#0e0f12] via-[#12151a] to-[#0a0c10] text-white overflow-hidden"
     >
-      {/* 🌌 Animated Background Glow */}
-      <div className="absolute -z-10 left-1/2 top-1/3 w-[600px] h-[600px] rounded-full bg-cyan-400 blur-[120px] opacity-20 animate-pulse" />
-
-      {/* 🎨 Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none">
-        <svg width="100%" height="100%">
-          <defs>
-            <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="1" cy="1" r="1" fill="#ffffff" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
+      {/* 🌌 Canvas Background (stars, particles, etc.) */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_50%_20%,rgba(0,216,255,0.1),transparent)] animate-[pulse_10s_infinite]" />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* 👋 Animated Intro */}
+      {/* 🧊 Floating SVG Blob */}
+      <svg
+        className="absolute top-0 left-0 w-[200px] opacity-20 animate-[spin_40s_linear_infinite]"
+        viewBox="0 0 200 200"
+      >
+        <path
+          fill="#00D8FF"
+          d="M44.8,-62.3C59.3,-53.4,72.7,-39.6,74.2,-24.7C75.7,-9.8,65.3,6.1,56.1,21.3C46.8,36.5,38.6,50.9,25.4,60.4C12.1,69.8,-6.2,74.2,-22.3,68.4C-38.3,62.6,-52,46.7,-61.2,29.3C-70.3,12,-75,-6.9,-71.8,-23.8C-68.5,-40.7,-57.2,-55.5,-42.7,-64.7C-28.3,-73.9,-14.1,-77.4,0.7,-78.3C15.5,-79.3,31.1,-77.6,44.8,-62.3Z"
+          transform="translate(100 100)"
+        />
+      </svg>
+
+      {/* 🪂 Scroll-aware Floating Name */}
+      <Parallax speed={-10}>
         <motion.h1
-          className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight"
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          viewport={{ once: false, amount: 0.3 }}
+          className="text-6xl md:text-7xl font-extrabold text-center text-cyan-400 drop-shadow-2xl mb-6"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
         >
-          <Sparkles className="inline-block text-[#00D8FF] mr-2 animate-pulse" />
-          Hello, I'm <span className="text-[#00D8FF] underline decoration-[#00D8FF]/30">Nickshay Chouhan</span> 👋
+          Hi, I’m Nickshay Chouhan
         </motion.h1>
+      </Parallax>
 
-        {/* 🧑 Typewriter */}
-        <h2 className="text-lg md:text-xl text-gray-300 font-mono mb-6">
-          <Typewriter
-            words={['Full Stack Web Developer', 'React / Node Enthusiast', 'UI/UX-Focused Coder']}
-            loop
-            cursor
-            cursorStyle="_"
-            typeSpeed={70}
-            deleteSpeed={40}
-            delaySpeed={2000}
-          />
-        </h2>
+      {/* 🖋️ Typewriter
+      <motion.h2
+        className="text-center text-lg md:text-xl font-mono text-gray-300 mb-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      >
+        <Typewriter
+          words={["React & Node Wizard", "Full Stack Engineer", "Creator @ Heart"]}
+          loop
+          cursor
+          cursorStyle="|"
+          typeSpeed={70}
+          deleteSpeed={50}
+          delaySpeed={2000}
+        />
+      </motion.h2> */}
 
-        {/* 🚀 Tech Badges */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-4 mb-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-        >
-          {[
-            { name: 'HTML / CSS', icon: <BadgeCode size={16} /> },
-            { name: 'React / Next.js', icon: <LaptopMinimal size={16} /> },
-            { name: 'Node / Express', icon: <TerminalSquareDashed size={16} /> },
-            { name: 'MongoDB', icon: <Database size={16} /> },
-            { name: 'JWT / API', icon: <CloudCog size={16} /> },
-            { name: 'Vercel / Render', icon: <BriefcaseBusiness size={16} /> },
-          ].map((item, i) => (
+      {/* 🔮 Tech Stack Badges */}
+      <div className="flex flex-wrap justify-center gap-6 mb-24">
+        {techStack.map((tech, idx) => (
+          <motion.div
+            key={idx}
+            className="relative px-5 py-3 mt-8 rounded-full border border-cyan-400/20 bg-[#1b1e24]/60 text-cyan-300 text-sm font-semibold shadow-md hover:shadow-cyan-400/40 transition-all backdrop-blur-lg"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: idx * 0.15, duration: 0.5 }}
+          >
+            {tech.icon} <span className="ml-2">{tech.name}</span>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 📜 Career Timeline Slider */}
+      <div className="max-w-3xl mx-auto mt-5">
+        <Slider {...sliderSettings}>
+          {careerSlides.map((slide, i) => (
             <motion.div
               key={i}
-              className="group relative flex items-center gap-2 px-4 py-2 rounded-full bg-[#2a2f3b] text-[#00D8FF] text-sm font-medium border border-[#00D8FF]/30 hover:bg-[#00D8FF]/10 transition-transform hover:-translate-y-1 hover:shadow-[#00D8FF]/20 shadow-md cursor-pointer"
-              custom={i}
-              variants={badgeVariants}
-              whileHover={{ scale: 1.08, rotate: -1 }}
-              whileTap={{ scale: 0.95 }}
+              className="bg-[#1b1e24]/60 border border-white/10 rounded-2xl px-6 py-10 text-center shadow-xl backdrop-blur"
+              initial={{ scale: 0.95, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.7 }}
             >
-              <div className="absolute -inset-1 bg-[#00D8FF] opacity-10 blur-md rounded-full group-hover:opacity-20 transition-all" />
-              {item.icon} {item.name}
+              <h3 className="text-xl font-bold text-cyan-300 mb-3">
+                {slide.title}
+              </h3>
+              <p className="text-gray-400 leading-relaxed">{slide.description}</p>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* 🧾 Career Slider */}
-        <motion.div
-          className="bg-[#2b323f] rounded-2xl px-4 md:px-8 py-10 mb-10 shadow-xl max-w-3xl mx-auto backdrop-blur-md border border-white/5"
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: false, amount: 0.3 }}
-        >
-          <Slider {...sliderSettings}>
-            {careerSlides.map((slide, index) => (
-              <motion.div
-                key={index}
-                className="text-center px-4"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: false, amount: 0.3 }}
-              >
-                <h3 className="text-xl font-semibold text-[#00D8FF] mb-2">{slide.title}</h3>
-                <p className="text-gray-300 leading-relaxed text-md">{slide.description}</p>
-              </motion.div>
-            ))}
-          </Slider>
-        </motion.div>
-
-        {/* CTA Button */}
-        <motion.a
-          href="#projects"
-          className="group inline-flex items-center gap-2 mt-10 bg-gradient-to-r from-cyan-500 to-blue-500 text-black px-8 py-3 rounded-full text-lg font-semibold hover:brightness-110 transition-all shadow-md hover:shadow-cyan-500/30 relative overflow-hidden"
-          whileHover={{ scale: 1.1 }}
-        >
-          <span className="absolute inset-0 bg-white opacity-5 group-hover:opacity-10 transition-opacity rounded-full" />
-          <RocketLaunch className="animate-bounce" size={20} />
-          See My Work
-        </motion.a>
-
-        {/* Unique Quote */}
-        <p className="text-gray-400 text-sm italic mt-4">{randomQuote}</p>
+        </Slider>
       </div>
+
+      {/* ⚡ Magnetic Button */}
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        className="mt-16 flex justify-center"
+      >
+        <a
+          href="#projects"
+          className="bg-cyan-400 hover:bg-cyan-500 text-black px-10 py-4 rounded-full font-semibold text-lg shadow-md hover:shadow-cyan-500/30 transition-all duration-300 transform hover:-translate-y-1"
+        >
+          <FaRocket className="inline-block mr-2 animate-pulse" />
+          Explore My Work
+        </a>
+      </motion.div>
+
+      {/* 🧠 Dev Quote */}
+      <p className="mt-8 text-center italic text-gray-500">{randomQuote}</p>
     </section>
   );
 };

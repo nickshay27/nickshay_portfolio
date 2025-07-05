@@ -7,19 +7,21 @@ import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
-
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 function App() {
   return (
     <div className="bg-[#1e2530] font-sans">
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Services />
-      <Contact />
-      <ChatBot />
-      <Footer />
+      <ParallaxProvider>
+        <Navbar />
+        <Hero />
+        <About />
+        <Projects />
+        <Services />
+        <Contact />
+        <ChatBot />
+        <Footer />
+      </ParallaxProvider>
     </div>
   );
 }

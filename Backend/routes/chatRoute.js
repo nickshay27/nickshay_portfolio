@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: __dirname + '/../.env' }); // ✅ load env from parent dir
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-console.log("GEMINI_API_KEY =", GEMINI_API_KEY); // Should show key in terminal
+// console.log("GEMINI_API_KEY =", GEMINI_API_KEY); // Should show key in terminal
 
 router.post('/chat', async (req, res) => {
   const userMessage = req.body.message;
